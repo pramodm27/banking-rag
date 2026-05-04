@@ -59,19 +59,41 @@ async def upload_pdf(file: UploadFile = File(...)):
 def ask(q: Query):
     query_vec = model.encode(q.question).tolist()
 
-    results = qdrant.search(
+    response = qdrant.query_points(
         collection_name=COLLECTION,
-        query_vector=query_vec,
+        query=query_vec,
         limit=3
     )
 
-    context = " ".join([r.payload["text"] for r in results])
+    results = getattr(response, "points", response)
 
-    prompt = f"Answer based only on context: {context}\nQuestion: {q.question}"
+    if not results:
+        return {"answer": "No relevant documents found."}
 
-    response = requests.post(
-        "http://ollama:11434/api/generate",
-        json={"model": "llama3", "prompt": prompt}
-    )
+    context_chunks = []
+    for r in results:
+        if hasattr(r, "payload") and r.payload:
+            context_chunks.append(r.payload.get("text", ""))
 
-    return {"answer": response.json().get("response", "")}
+    context = " ".join(context_chunks)
+
+    if not context.strip():
+        return {"answer": "Empty context retrieved."}
+
+    try:
+        llm_response = requests.post(
+            "http://ollama:11434/api/generate",
+            json={
+                "model": "phi3",
+                "prompt": f"{context}\nQuestion: {q.question}",
+                "stream": False
+            }
+        )
+
+        data = llm_response.json()
+        answer = data.get("response", "No response from model")
+
+    except Exception as e:
+        return {"answer": f"LLM error: {str(e)}"}
+
+    return {"answer": answer}

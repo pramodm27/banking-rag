@@ -1,0 +1,291 @@
+time="2026-05-04T03:13:14+05:30" level=warning msg="/Users/pramm/desktop/genai/production_banking_rag/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+qdrant-1  |            _                 _    
+qdrant-1  |   __ _  __| |_ __ __ _ _ __ | |_  
+qdrant-1  |  / _` |/ _` | '__/ _` | '_ \| __| 
+qdrant-1  | | (_| | (_| | | | (_| | | | | |_  
+qdrant-1  |  \__, |\__,_|_|  \__,_|_| |_|\__| 
+qdrant-1  |     |_|                           
+qdrant-1  | 
+qdrant-1  | Version: 1.17.1, build: eabee371
+qdrant-1  | Access web UI at http://localhost:6333/dashboard
+qdrant-1  | 
+qdrant-1  | 2026-05-03T20:22:54.270573Z  WARN qdrant: There is a potential issue with the filesystem for storage path ./storage. Details: Container filesystem detected - storage might be lost with container re-creation
+qdrant-1  | 2026-05-03T20:22:54.273425Z  INFO storage::content_manager::consensus::persistent: Initializing new raft state at ./storage/raft_state.json
+qdrant-1  | 2026-05-03T20:22:54.303745Z  INFO qdrant: Distributed mode disabled
+qdrant-1  | 2026-05-03T20:22:54.304825Z  INFO qdrant: Telemetry reporting enabled, id: 22a2f437-e736-44f0-901c-790b1ae57cbc
+qdrant-1  | 2026-05-03T20:22:54.701419Z  INFO qdrant::tonic: Qdrant gRPC listening on 6334
+qdrant-1  | 2026-05-03T20:22:54.701497Z  INFO qdrant::tonic: TLS disabled for gRPC API
+qdrant-1  | 2026-05-03T20:22:54.701999Z  INFO qdrant::actix: REST transport settings: keep_alive=5s, client_request_timeout=5s, client_disconnect_timeout=5s
+qdrant-1  | 2026-05-03T20:22:54.702018Z  INFO qdrant::actix: TLS disabled for REST API
+qdrant-1  | 2026-05-03T20:22:54.703994Z  INFO qdrant::actix: Qdrant HTTP listening on 6333
+qdrant-1  | 2026-05-03T20:22:54.704440Z  INFO actix_server::builder: starting 7 workers
+qdrant-1  | 2026-05-03T20:22:54.706223Z  INFO actix_server::server: Actix runtime found; starting in Actix runtime
+qdrant-1  | 2026-05-03T20:22:54.706230Z  INFO actix_server::server: starting service: "actix-web-service-0.0.0.0:6333", workers: 7, listening on: 0.0.0.0:6333
+qdrant-1  | 2026-05-03T20:30:21.085050Z  INFO actix_web::middleware::logger: 172.20.0.4 "GET /collections/banking_docs HTTP/1.1" 404 104 "-" "python-client/1.17.1 python/3.10.20" 0.003512
+qdrant-1  | 2026-05-03T20:30:21.089521Z  INFO storage::content_manager::toc::collection_meta_ops: Deleting collection banking_docs
+qdrant-1  | 2026-05-03T20:30:21.090159Z  INFO actix_web::middleware::logger: 172.20.0.4 "DELETE /collections/banking_docs HTTP/1.1" 200 72 "-" "python-client/1.17.1 python/3.10.20" 0.002631
+qdrant-1  | 2026-05-03T20:30:21.100972Z  INFO storage::content_manager::toc::collection_meta_ops: Creating collection banking_docs
+qdrant-1  | 2026-05-03T20:30:21.204551Z  INFO actix_web::middleware::logger: 172.20.0.4 "PUT /collections/banking_docs HTTP/1.1" 200 71 "-" "python-client/1.17.1 python/3.10.20" 0.107904
+qdrant-1  | 2026-05-03T20:42:45.818524Z  INFO actix_web::middleware::logger: 172.20.0.4 "PUT /collections/banking_docs/points?wait=true HTTP/1.1" 200 89 "-" "python-client/1.17.1 python/3.10.20" 0.019803
+api-1     | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+api-1     | Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3900.90it/s]
+api-1     | INFO:     Started server process [1]
+api-1     | INFO:     Waiting for application startup.
+api-1     | INFO:     Application startup complete.
+api-1     | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+api-1     | INFO:     151.101.192.223:52786 - "GET / HTTP/1.1" 200 OK
+api-1     | INFO:     151.101.192.223:41829 - "POST /upload_pdf HTTP/1.1" 200 OK
+api-1     | INFO:     151.101.192.223:21561 - "POST /ask HTTP/1.1" 500 Internal Server Error
+api-1     | ERROR:    Exception in ASGI application
+api-1     | Traceback (most recent call last):
+api-1     |   File "/usr/local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 415, in run_asgi
+api-1     |     result = await app(  # type: ignore[func-returns-value]
+api-1     |   File "/usr/local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+api-1     |     return await self.app(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/applications.py", line 1159, in __call__
+api-1     |     await super().__call__(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/applications.py", line 90, in __call__
+api-1     |     await self.middleware_stack(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+api-1     |     raise exc
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+api-1     |     await self.app(scope, receive, _send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+api-1     |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+api-1     |     raise exc
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+api-1     |     await app(scope, receive, sender)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+api-1     |     await self.app(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 660, in __call__
+api-1     |     await self.middleware_stack(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 680, in app
+api-1     |     await route.handle(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+api-1     |     await self.app(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 134, in app
+api-1     |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+api-1     |     raise exc
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+api-1     |     await app(scope, receive, sender)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 120, in app
+api-1     |     response = await f(request)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 674, in app
+api-1     |     raw_response = await run_endpoint_function(
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 330, in run_endpoint_function
+api-1     |     return await run_in_threadpool(dependant.call, **values)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+api-1     |     return await anyio.to_thread.run_sync(func)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/anyio/to_thread.py", line 63, in run_sync
+api-1     |     return await get_async_backend().run_sync_in_worker_thread(
+api-1     |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+api-1     |     return await future
+api-1     |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+api-1     |     result = context.run(func, *args)
+api-1     |   File "/app/main.py", line 62, in ask
+api-1     |     results = qdrant.search(
+api-1     | AttributeError: 'QdrantClient' object has no attribute 'search'
+api-1     | INFO:     151.101.192.223:23259 - "POST /ask HTTP/1.1" 500 Internal Server Error
+api-1     | ERROR:    Exception in ASGI application
+api-1     | Traceback (most recent call last):
+api-1     |   File "/usr/local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 415, in run_asgi
+api-1     |     result = await app(  # type: ignore[func-returns-value]
+api-1     |   File "/usr/local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+api-1     |     return await self.app(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/applications.py", line 1159, in __call__
+api-1     |     await super().__call__(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/applications.py", line 90, in __call__
+api-1     |     await self.middleware_stack(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+api-1     |     raise exc
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+api-1     |     await self.app(scope, receive, _send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+api-1     |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+api-1     |     raise exc
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+api-1     |     await app(scope, receive, sender)
+ollama-1  | Couldn't find '/root/.ollama/id_ed25519'. Generating new private key.
+ollama-1  | Your new public key is: 
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+api-1     |     await self.app(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 660, in __call__
+api-1     |     await self.middleware_stack(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 680, in app
+api-1     |     await route.handle(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+api-1     |     await self.app(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 134, in app
+api-1     |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+api-1     |     raise exc
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+api-1     |     await app(scope, receive, sender)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 120, in app
+api-1     |     response = await f(request)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 674, in app
+api-1     |     raw_response = await run_endpoint_function(
+api-1     |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 330, in run_endpoint_function
+api-1     |     return await run_in_threadpool(dependant.call, **values)
+ollama-1  | 
+ollama-1  | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKOnda1LKFY5B5WCh0tbvneg7ajWG41e3xU3Wdde+z3k
+ollama-1  | 
+ollama-1  | time=2026-05-03T20:22:54.376Z level=INFO source=routes.go:1782 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:0 OLLAMA_DEBUG:INFO OLLAMA_DEBUG_LOG_REQUESTS:false OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://0.0.0.0:11434 OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/root/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NO_CLOUD:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false OLLAMA_VULKAN:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+ollama-1  | time=2026-05-03T20:22:54.382Z level=INFO source=routes.go:1784 msg="Ollama cloud disabled: false"
+ollama-1  | time=2026-05-03T20:22:54.387Z level=INFO source=images.go:517 msg="total blobs: 0"
+ollama-1  | time=2026-05-03T20:22:54.387Z level=INFO source=images.go:524 msg="total unused blobs removed: 0"
+ollama-1  | time=2026-05-03T20:22:54.390Z level=INFO source=routes.go:1847 msg="Listening on [::]:11434 (version 0.22.1)"
+ollama-1  | time=2026-05-03T20:22:54.484Z level=INFO source=runner.go:67 msg="discovering available GPUs..."
+ollama-1  | time=2026-05-03T20:22:54.510Z level=INFO source=server.go:444 msg="starting runner" cmd="/usr/bin/ollama runner --ollama-engine --port 40403"
+ollama-1  | time=2026-05-03T20:22:54.660Z level=INFO source=server.go:444 msg="starting runner" cmd="/usr/bin/ollama runner --ollama-engine --port 40865"
+ollama-1  | time=2026-05-03T20:22:54.732Z level=INFO source=types.go:60 msg="inference compute" id=cpu library=cpu compute="" name=cpu description=cpu libdirs=ollama driver="" pci_id="" type="" total="3.8 GiB" available="3.8 GiB"
+ollama-1  | time=2026-05-03T20:22:54.732Z level=INFO source=routes.go:1897 msg="vram-based default context" total_vram="0 B" default_num_ctx=4096
+ollama-1  | time=2026-05-03T20:22:55.195Z level=INFO source=model_recommendations.go:179 msg="model recommendations cache sleep scheduled" wait=4h3m28.230700108s consecutive_failures=0
+ollama-1  | [GIN] 2026/05/03 - 20:45:43 | 200 |    4.958625ms |       127.0.0.1 | HEAD     "/"
+ollama-1  | [GIN] 2026/05/03 - 20:45:43 | 200 |     5.91225ms |       127.0.0.1 | GET      "/api/tags"
+ollama-1  | [GIN] 2026/05/03 - 20:46:26 | 200 |     339.875µs |       127.0.0.1 | HEAD     "/"
+ollama-1  | time=2026-05-03T20:46:28.567Z level=INFO source=download.go:179 msg="downloading 6a0746a1ec1a in 16 291 MB part(s)"
+ollama-1  | time=2026-05-03T21:10:29.680Z level=INFO source=download.go:179 msg="downloading 4fa551d4f938 in 1 12 KB part(s)"
+ollama-1  | time=2026-05-03T21:10:31.875Z level=INFO source=download.go:179 msg="downloading 8ab4849b038c in 1 254 B part(s)"
+ollama-1  | time=2026-05-03T21:10:33.764Z level=INFO source=download.go:179 msg="downloading 577073ffcc6c in 1 110 B part(s)"
+ollama-1  | time=2026-05-03T21:10:36.995Z level=INFO source=download.go:179 msg="downloading 3f8eb4da87fa in 1 485 B part(s)"
+ollama-1  | [GIN] 2026/05/03 - 21:10:48 | 200 |        24m21s |       127.0.0.1 | POST     "/api/pull"
+api-1     |   File "/usr/local/lib/python3.10/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+api-1     |     return await anyio.to_thread.run_sync(func)
+api-1     |   File "/usr/local/lib/python3.10/site-packages/anyio/to_thread.py", line 63, in run_sync
+ollama-1  | [GIN] 2026/05/03 - 21:15:08 | 200 |     316.041µs |       127.0.0.1 | HEAD     "/"
+ollama-1  | [GIN] 2026/05/03 - 21:15:08 | 200 |    3.467125ms |       127.0.0.1 | GET      "/api/tags"
+ollama-1  | time=2026-05-03T21:15:31.406Z level=WARN source=cpu_linux.go:130 msg="failed to parse CPU allowed micro secs" error="strconv.ParseInt: parsing \"max\": invalid syntax"
+ollama-1  | llama_model_loader: loaded meta data with 22 key-value pairs and 291 tensors from /root/.ollama/models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa (version GGUF V3 (latest))
+ollama-1  | llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+api-1     |     return await get_async_backend().run_sync_in_worker_thread(
+api-1     |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+api-1     |     return await future
+api-1     |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+api-1     |     result = context.run(func, *args)
+ollama-1  | llama_model_loader: - kv   0:                       general.architecture str              = llama
+ollama-1  | llama_model_loader: - kv   1:                               general.name str              = Meta-Llama-3-8B-Instruct
+ollama-1  | llama_model_loader: - kv   2:                          llama.block_count u32              = 32
+ollama-1  | llama_model_loader: - kv   3:                       llama.context_length u32              = 8192
+ollama-1  | llama_model_loader: - kv   4:                     llama.embedding_length u32              = 4096
+ollama-1  | llama_model_loader: - kv   5:                  llama.feed_forward_length u32              = 14336
+ollama-1  | llama_model_loader: - kv   6:                 llama.attention.head_count u32              = 32
+ollama-1  | llama_model_loader: - kv   7:              llama.attention.head_count_kv u32              = 8
+api-1     |   File "/app/main.py", line 62, in ask
+api-1     |     results = qdrant.search(
+api-1     | AttributeError: 'QdrantClient' object has no attribute 'search'
+ollama-1  | llama_model_loader: - kv   8:                       llama.rope.freq_base f32              = 500000.000000
+ollama-1  | llama_model_loader: - kv   9:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+ollama-1  | llama_model_loader: - kv  10:                          general.file_type u32              = 2
+ollama-1  | llama_model_loader: - kv  11:                           llama.vocab_size u32              = 128256
+ollama-1  | llama_model_loader: - kv  12:                 llama.rope.dimension_count u32              = 128
+ollama-1  | llama_model_loader: - kv  13:                       tokenizer.ggml.model str              = gpt2
+ollama-1  | llama_model_loader: - kv  14:                         tokenizer.ggml.pre str              = llama-bpe
+ollama-1  | llama_model_loader: - kv  15:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+ollama-1  | llama_model_loader: - kv  16:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+ollama-1  | llama_model_loader: - kv  17:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+ollama-1  | llama_model_loader: - kv  18:                tokenizer.ggml.bos_token_id u32              = 128000
+ollama-1  | llama_model_loader: - kv  19:                tokenizer.ggml.eos_token_id u32              = 128009
+ollama-1  | llama_model_loader: - kv  20:                    tokenizer.chat_template str              = {% set loop_messages = messages %}{% ...
+ollama-1  | llama_model_loader: - kv  21:               general.quantization_version u32              = 2
+ollama-1  | llama_model_loader: - type  f32:   65 tensors
+ollama-1  | llama_model_loader: - type q4_0:  225 tensors
+ollama-1  | llama_model_loader: - type q6_K:    1 tensors
+ollama-1  | print_info: file format = GGUF V3 (latest)
+ollama-1  | print_info: file type   = Q4_0
+ollama-1  | print_info: file size   = 4.33 GiB (4.64 BPW) 
+ollama-1  | load: printing all EOG tokens:
+ollama-1  | load:   - 128001 ('<|end_of_text|>')
+ollama-1  | load:   - 128009 ('<|eot_id|>')
+ollama-1  | load: special tokens cache size = 256
+ollama-1  | load: token to piece cache size = 0.8000 MB
+ollama-1  | print_info: arch             = llama
+ollama-1  | print_info: vocab_only       = 1
+ollama-1  | print_info: no_alloc         = 0
+ollama-1  | print_info: model type       = ?B
+ollama-1  | print_info: model params     = 8.03 B
+ollama-1  | print_info: general.name     = Meta-Llama-3-8B-Instruct
+ollama-1  | print_info: vocab type       = BPE
+ollama-1  | print_info: n_vocab          = 128256
+ollama-1  | print_info: n_merges         = 280147
+ollama-1  | print_info: BOS token        = 128000 '<|begin_of_text|>'
+ollama-1  | print_info: EOS token        = 128009 '<|eot_id|>'
+ollama-1  | print_info: EOT token        = 128009 '<|eot_id|>'
+ollama-1  | print_info: LF token         = 198 'Ċ'
+ollama-1  | print_info: EOG token        = 128001 '<|end_of_text|>'
+ollama-1  | print_info: EOG token        = 128009 '<|eot_id|>'
+ollama-1  | print_info: max token length = 256
+ollama-1  | llama_model_load: vocab only - skipping tensors
+ollama-1  | time=2026-05-03T21:15:31.972Z level=INFO source=server.go:444 msg="starting runner" cmd="/usr/bin/ollama runner --model /root/.ollama/models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa --port 45661"
+ollama-1  | time=2026-05-03T21:15:31.974Z level=INFO source=sched.go:484 msg="system memory" total="3.8 GiB" free="3.5 GiB" free_swap="941.7 MiB"
+ollama-1  | time=2026-05-03T21:15:31.975Z level=INFO source=server.go:511 msg="loading model" "model layers"=33 requested=-1
+ollama-1  | time=2026-05-03T21:15:31.976Z level=WARN source=server.go:1058 msg="model request too large for system" requested="4.6 GiB" available="4.5 GiB" total="3.8 GiB" free="3.5 GiB" swap="941.7 MiB"
+ollama-1  | time=2026-05-03T21:15:31.976Z level=INFO source=sched.go:511 msg="Load failed" model=/root/.ollama/models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa error="model requires more system memory (4.6 GiB) than is available (4.5 GiB)"
+ollama-1  | time=2026-05-03T21:15:32.063Z level=INFO source=runner.go:965 msg="starting go runner"
+ollama-1  | load_backend: loaded CPU backend from /usr/lib/ollama/libggml-cpu.so
+ollama-1  | time=2026-05-03T21:15:32.077Z level=INFO source=ggml.go:104 msg=system CPU.0.NEON=1 CPU.0.ARM_FMA=1 CPU.0.LLAMAFILE=1 CPU.1.NEON=1 CPU.1.ARM_FMA=1 CPU.1.LLAMAFILE=1 compiler=cgo(clang)
+ollama-1  | time=2026-05-03T21:15:32.112Z level=INFO source=runner.go:1001 msg="Server listening on 127.0.0.1:45661"
+ollama-1  | [GIN] 2026/05/03 - 21:15:32 | 500 |  1.007763751s | 151.101.192.223 | POST     "/api/generate"
+ollama-1  | time=2026-05-03T21:19:11.844Z level=WARN source=cpu_linux.go:130 msg="failed to parse CPU allowed micro secs" error="strconv.ParseInt: parsing \"max\": invalid syntax"
+ollama-1  | llama_model_loader: loaded meta data with 22 key-value pairs and 291 tensors from /root/.ollama/models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa (version GGUF V3 (latest))
+ollama-1  | llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+ollama-1  | llama_model_loader: - kv   0:                       general.architecture str              = llama
+ollama-1  | llama_model_loader: - kv   1:                               general.name str              = Meta-Llama-3-8B-Instruct
+ollama-1  | llama_model_loader: - kv   2:                          llama.block_count u32              = 32
+ollama-1  | llama_model_loader: - kv   3:                       llama.context_length u32              = 8192
+ollama-1  | llama_model_loader: - kv   4:                     llama.embedding_length u32              = 4096
+ollama-1  | llama_model_loader: - kv   5:                  llama.feed_forward_length u32              = 14336
+ollama-1  | llama_model_loader: - kv   6:                 llama.attention.head_count u32              = 32
+ollama-1  | llama_model_loader: - kv   7:              llama.attention.head_count_kv u32              = 8
+ollama-1  | llama_model_loader: - kv   8:                       llama.rope.freq_base f32              = 500000.000000
+ollama-1  | llama_model_loader: - kv   9:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+ollama-1  | llama_model_loader: - kv  10:                          general.file_type u32              = 2
+ollama-1  | llama_model_loader: - kv  11:                           llama.vocab_size u32              = 128256
+ollama-1  | llama_model_loader: - kv  12:                 llama.rope.dimension_count u32              = 128
+ollama-1  | llama_model_loader: - kv  13:                       tokenizer.ggml.model str              = gpt2
+ollama-1  | llama_model_loader: - kv  14:                         tokenizer.ggml.pre str              = llama-bpe
+ollama-1  | llama_model_loader: - kv  15:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+ollama-1  | llama_model_loader: - kv  16:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+ollama-1  | llama_model_loader: - kv  17:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+ollama-1  | llama_model_loader: - kv  18:                tokenizer.ggml.bos_token_id u32              = 128000
+ollama-1  | llama_model_loader: - kv  19:                tokenizer.ggml.eos_token_id u32              = 128009
+ollama-1  | llama_model_loader: - kv  20:                    tokenizer.chat_template str              = {% set loop_messages = messages %}{% ...
+ollama-1  | llama_model_loader: - kv  21:               general.quantization_version u32              = 2
+ollama-1  | llama_model_loader: - type  f32:   65 tensors
+ollama-1  | llama_model_loader: - type q4_0:  225 tensors
+ollama-1  | llama_model_loader: - type q6_K:    1 tensors
+ollama-1  | print_info: file format = GGUF V3 (latest)
+ollama-1  | print_info: file type   = Q4_0
+ollama-1  | print_info: file size   = 4.33 GiB (4.64 BPW) 
+ollama-1  | load: printing all EOG tokens:
+ollama-1  | load:   - 128001 ('<|end_of_text|>')
+ollama-1  | load:   - 128009 ('<|eot_id|>')
+ollama-1  | load: special tokens cache size = 256
+ollama-1  | load: token to piece cache size = 0.8000 MB
+ollama-1  | print_info: arch             = llama
+ollama-1  | print_info: vocab_only       = 1
+ollama-1  | print_info: no_alloc         = 0
+ollama-1  | print_info: model type       = ?B
+ollama-1  | print_info: model params     = 8.03 B
+ollama-1  | print_info: general.name     = Meta-Llama-3-8B-Instruct
+ollama-1  | print_info: vocab type       = BPE
+ollama-1  | print_info: n_vocab          = 128256
+ollama-1  | print_info: n_merges         = 280147
+ollama-1  | print_info: BOS token        = 128000 '<|begin_of_text|>'
+ollama-1  | print_info: EOS token        = 128009 '<|eot_id|>'
+ollama-1  | print_info: EOT token        = 128009 '<|eot_id|>'
+ollama-1  | print_info: LF token         = 198 'Ċ'
+ollama-1  | print_info: EOG token        = 128001 '<|end_of_text|>'
+ollama-1  | print_info: EOG token        = 128009 '<|eot_id|>'
+ollama-1  | print_info: max token length = 256
+ollama-1  | llama_model_load: vocab only - skipping tensors
+ollama-1  | time=2026-05-03T21:19:12.509Z level=INFO source=server.go:444 msg="starting runner" cmd="/usr/bin/ollama runner --model /root/.ollama/models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa --port 43021"
+ollama-1  | time=2026-05-03T21:19:12.510Z level=INFO source=sched.go:484 msg="system memory" total="3.8 GiB" free="3.6 GiB" free_swap="941.9 MiB"
+ollama-1  | time=2026-05-03T21:19:12.510Z level=INFO source=server.go:511 msg="loading model" "model layers"=33 requested=-1
+ollama-1  | time=2026-05-03T21:19:12.510Z level=WARN source=server.go:1058 msg="model request too large for system" requested="4.6 GiB" available="4.5 GiB" total="3.8 GiB" free="3.6 GiB" swap="941.9 MiB"
+ollama-1  | time=2026-05-03T21:19:12.510Z level=INFO source=sched.go:511 msg="Load failed" model=/root/.ollama/models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa error="model requires more system memory (4.6 GiB) than is available (4.5 GiB)"
+ollama-1  | time=2026-05-03T21:19:12.584Z level=INFO source=runner.go:965 msg="starting go runner"
+ollama-1  | [GIN] 2026/05/03 - 21:19:12 | 500 |  995.139209ms | 151.101.192.223 | POST     "/api/generate"
